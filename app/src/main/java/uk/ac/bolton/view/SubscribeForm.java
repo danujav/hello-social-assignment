@@ -4,17 +4,26 @@
  */
 package uk.ac.bolton.view;
 
+import uk.ac.bolton.service.ChannelObservable;
+
 /**
  *
  * @author danu
  */
 public class SubscribeForm extends javax.swing.JFrame {
+    
+    private ChannelObservable co;
 
     /**
      * Creates new form SubscribeForm
      */
     public SubscribeForm() {
         initComponents();
+    }
+    
+    public SubscribeForm(ChannelObservable co) {
+        this();
+        this.co = co;
     }
 
     /**
@@ -32,7 +41,8 @@ public class SubscribeForm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Subscribe and Unscribe");
 
         jLabel1.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         jLabel1.setText("Subscribe your favorites here...");
@@ -89,8 +99,8 @@ public class SubscribeForm extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtChannelName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addComponent(txtChannelName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))

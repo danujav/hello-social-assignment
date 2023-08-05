@@ -4,17 +4,27 @@
  */
 package uk.ac.bolton.view;
 
+import uk.ac.bolton.service.ChannelObservable;
+
 /**
  *
  * @author danu
  */
 public class ChannelForm extends javax.swing.JFrame {
+    
+    private ChannelObservable co;
+    private String channelName;
 
     /**
      * Creates new form ChannelForm
      */
     public ChannelForm() {
         initComponents();
+    }
+    
+    public ChannelForm(ChannelObservable co) {
+        this();
+        this.co = co;
     }
 
     /**
@@ -32,7 +42,8 @@ public class ChannelForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtLog = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Channel");
 
         jLabel2.setText("Message: ");
 
@@ -68,9 +79,9 @@ public class ChannelForm extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSend))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSend)
+                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -80,10 +91,7 @@ public class ChannelForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-//        channelObservable.sendMessage(this.channelName.toLowerCase(), this.channelName + ": " + txtMessage.getText());
-//        Date date = new Date();
-//        txtLog.append(date.toLocaleString()+" : "+txtMessage.getText());
-//        txtMessage.setText("");
+
     }//GEN-LAST:event_btnSendActionPerformed
 
     /**

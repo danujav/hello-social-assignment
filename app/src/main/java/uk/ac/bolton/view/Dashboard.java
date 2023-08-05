@@ -21,6 +21,7 @@ public class Dashboard extends javax.swing.JFrame {
     }
     
     public Dashboard(ChannelObservable co) {
+        this();
         this.co = co;
     }
 
@@ -39,11 +40,11 @@ public class Dashboard extends javax.swing.JFrame {
         btnStartSubscribeOnAction = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dashbord");
 
-        btnStartChannelOnAction.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/ac/bolton/assets/channel.png"))); // NOI18N
+        btnStartChannelOnAction.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
         btnStartChannelOnAction.setText("Channel");
         btnStartChannelOnAction.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnStartChannelOnAction.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnStartChannelOnAction.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStartChannelOnAction.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnStartChannelOnAction.addActionListener(new java.awt.event.ActionListener() {
@@ -55,10 +56,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 24)); // NOI18N
         jLabel1.setText("Hello Social");
 
-        btnStartSubscribeOnAction.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uk/ac/bolton/assets/subscribe.png"))); // NOI18N
+        btnStartSubscribeOnAction.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
         btnStartSubscribeOnAction.setText("Subscribe");
         btnStartSubscribeOnAction.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnStartSubscribeOnAction.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         btnStartSubscribeOnAction.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnStartSubscribeOnAction.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnStartSubscribeOnAction.addActionListener(new java.awt.event.ActionListener() {
@@ -96,20 +96,21 @@ public class Dashboard extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnStartChannelOnAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStartChannelOnAction, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
                     .addComponent(btnStartSubscribeOnAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartChannelOnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartChannelOnActionActionPerformed
-        //        new Channel(this.channelObservable).setVisible(true);
+        new ChannelForm(this.co).setVisible(true);
     }//GEN-LAST:event_btnStartChannelOnActionActionPerformed
 
     private void btnStartSubscribeOnActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSubscribeOnActionActionPerformed
-        // TODO add your handling code here:
+        new SubscribeForm(this.co).setVisible(true);
     }//GEN-LAST:event_btnStartSubscribeOnActionActionPerformed
 
     /**
