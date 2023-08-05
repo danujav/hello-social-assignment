@@ -4,6 +4,9 @@
  */
 package uk.ac.bolton.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import uk.ac.bolton.service.ChannelObservable;
 import uk.ac.bolton.service.ChannelObserver;
 
@@ -12,6 +15,8 @@ import uk.ac.bolton.service.ChannelObserver;
  * @author danu
  */
 public class ChannelObservableImpl implements ChannelObservable {
+    
+    public static Map<String, List<ChannelObserver>> channelList = new HashMap<>();
 
     @Override
     public void addChannel(String name) {
