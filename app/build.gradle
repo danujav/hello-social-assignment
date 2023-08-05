@@ -22,14 +22,21 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation 'org.junit.platform:junit-platform-suite-api:1.8.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-suite-engine:1.8.2'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'uk.ac.bolton.App'
+    mainClass = 'uk.ac.bolton.Launcher'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+
+    useJUnit()
 }
