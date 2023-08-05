@@ -9,5 +9,5 @@ package uk.ac.bolton.service;
  * @author danu
  */
 public interface ChannelObserver {
-    
+    void update(String msg);
 }

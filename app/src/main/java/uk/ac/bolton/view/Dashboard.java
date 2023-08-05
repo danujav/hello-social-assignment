@@ -4,17 +4,24 @@
  */
 package uk.ac.bolton.view;
 
+import uk.ac.bolton.service.ChannelObservable;
+
 /**
  *
  * @author danu
  */
 public class Dashboard extends javax.swing.JFrame {
+    private ChannelObservable co;
 
     /**
      * Creates new form Dashboard
      */
     public Dashboard() {
         initComponents();
+    }
+    
+    public Dashboard(ChannelObservable co) {
+        this.co = co;
     }
 
     /**
