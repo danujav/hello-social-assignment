@@ -114,11 +114,13 @@ public class UserLoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
-        // TODO add your handling code here:
+        btnJoin.doClick();
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btnJoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJoinActionPerformed
         String userName = txtUserName.getText();
+        
+        if(userName.equals("")) throw new IllegalArgumentException("User-Name can't be empty!");
        
         new UserProfileForm(userName).setVisible(true);
     }//GEN-LAST:event_btnJoinActionPerformed

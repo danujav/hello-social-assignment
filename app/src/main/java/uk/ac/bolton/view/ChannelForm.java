@@ -14,22 +14,19 @@ import uk.ac.bolton.service.impl.ChannelObservableImpl;
  * @author danu
  */
 public class ChannelForm extends javax.swing.JFrame {
-    
-    private ChannelObservable channelObservable;
+
+    private final ChannelObservable channelObservable;
 
     {
         this.channelObservable = new ChannelObservableImpl();
     }
-    
-    
-    
+
     /**
      * Creates new form ChannelForm
      */
     public ChannelForm() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +42,7 @@ public class ChannelForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaContent = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Channel");
@@ -65,8 +63,13 @@ public class ChannelForm extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/profile.png"))); // NOI18N
 
         txtAreaContent.setColumns(20);
+        txtAreaContent.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         txtAreaContent.setRows(5);
         jScrollPane1.setViewportView(txtAreaContent);
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("What's on you mind...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,10 +86,16 @@ public class ChannelForm extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel2)))
                         .addGap(0, 299, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -96,10 +105,12 @@ public class ChannelForm extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addComponent(btnTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -107,8 +118,20 @@ public class ChannelForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTweetActionPerformed
-        String content = txtAreaContent.getText(); 
-        channelObservable.updateTheTimeLine(content);
+
+        new Thread() {
+            @Override
+            public void run() {
+                String content = txtAreaContent.getText();
+                if (content.equals("")) {
+                    throw new IllegalArgumentException("Content should be there before the tweet!");
+                }
+
+                channelObservable.updateTheTimeLine(content);
+            }
+        }.start();
+
+
     }//GEN-LAST:event_btnTweetActionPerformed
 
     /**
@@ -150,6 +173,7 @@ public class ChannelForm extends javax.swing.JFrame {
     private javax.swing.JButton btnTweet;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtAreaContent;
     // End of variables declaration//GEN-END:variables
@@ -157,5 +181,4 @@ public class ChannelForm extends javax.swing.JFrame {
     /**
      * @return the userProfiles
      */
-   
 }

@@ -5,7 +5,8 @@
 package uk.ac.bolton.view;
 
 import java.awt.Color;
-import uk.ac.bolton.service.impl.ChannelObservableImpl;
+import uk.ac.bolton.service.IChannelBehaviours;
+import uk.ac.bolton.service.impl.ChannelBehaviours;
 
 /**
  *
@@ -13,7 +14,12 @@ import uk.ac.bolton.service.impl.ChannelObservableImpl;
  */
 public class UserProfileForm extends javax.swing.JFrame {
 
+    private final IChannelBehaviours channelBehaviours;
     private String userName;
+    
+    {
+        channelBehaviours = new ChannelBehaviours();
+    }
     
     
     /**
@@ -42,6 +48,7 @@ public class UserProfileForm extends javax.swing.JFrame {
         btnSubUnSub = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaTimeLine = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,8 +67,15 @@ public class UserProfileForm extends javax.swing.JFrame {
         });
 
         txtAreaTimeLine.setColumns(20);
+        txtAreaTimeLine.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         txtAreaTimeLine.setRows(5);
+        txtAreaTimeLine.setAlignmentX(1.0F);
+        txtAreaTimeLine.setAlignmentY(1.0F);
         jScrollPane1.setViewportView(txtAreaTimeLine);
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel3.setText("News Feed");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,7 +88,10 @@ public class UserProfileForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbChannels, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSubUnSub, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
+                        .addComponent(btnSubUnSub, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -84,8 +101,10 @@ public class UserProfileForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cmbChannels)
                     .addComponent(btnSubUnSub, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -99,13 +118,13 @@ public class UserProfileForm extends javax.swing.JFrame {
             btnSubUnSub.setText("Unsubscribe");
             btnSubUnSub.setBackground(Color.DARK_GRAY);
            
-            ChannelObservableImpl.userProfileList.put(userName, this);
+            channelBehaviours.addSubscribers(userName, this);
             
         } else {
             btnSubUnSub.setText("Subscribe");
             btnSubUnSub.setBackground(new Color(255,102,102));
             
-            ChannelObservableImpl.userProfileList.remove(userName);
+            channelBehaviours.removeSubscribers(userName);
         }
     }//GEN-LAST:event_btnSubUnSubActionPerformed
 
@@ -148,6 +167,7 @@ public class UserProfileForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSubUnSub;
     private javax.swing.JComboBox<String> cmbChannels;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtAreaTimeLine;
     // End of variables declaration//GEN-END:variables
