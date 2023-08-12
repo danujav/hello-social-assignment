@@ -5,10 +5,10 @@
 package uk.ac.bolton.service.impl;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import uk.ac.bolton.service.ChannelObservable;
-import uk.ac.bolton.service.ChannelObserver;
+import uk.ac.bolton.view.UserProfileForm;
 
 /**
  *
@@ -16,36 +16,15 @@ import uk.ac.bolton.service.ChannelObserver;
  */
 public class ChannelObservableImpl implements ChannelObservable {
     
-    public static Map<String, List<ChannelObserver>> channelList = new HashMap<>();
+    public static Map<String, UserProfileForm> userProfileList = new HashMap<>();
 
     @Override
-    public void addChannel(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void updateTheTimeLine(String content) {
+        Set<String> keySet = userProfileList.keySet();
+        
+        for (String userName : keySet) {
+            userProfileList.get(userName).getTxtAreaTimeLine().setText(content);
+        }
     }
 
-    @Override
-    public void removeChannel(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean checkChannelName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void subscribeToChannel(String channelName, ChannelObserver co) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void sendMessage(String channelName, String message) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void unSubscribe(String channelName, ChannelObserver co) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

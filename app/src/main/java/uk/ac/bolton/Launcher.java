@@ -3,14 +3,17 @@
  */
 package uk.ac.bolton;
 
-import uk.ac.bolton.service.ChannelObservable;
-import uk.ac.bolton.service.impl.ChannelObservableImpl;
-import uk.ac.bolton.view.Dashboard;
+import uk.ac.bolton.view.ChannelForm;
+import uk.ac.bolton.view.UserLoginForm;
 
 public class Launcher {
 
     public static void main(String[] args) {
-        ChannelObservable co = new ChannelObservableImpl();
-        new Dashboard(co).setVisible(true);
+//        ChannelObservableeeee co = new ChannelObservableImpl();
+//        new Dashboard(co).setVisible(true);
+            
+          new ChannelForm().setVisible(true);
+          new UserLoginForm().setVisible(true);
+
     }
 }

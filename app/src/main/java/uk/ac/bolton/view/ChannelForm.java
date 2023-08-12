@@ -4,7 +4,10 @@
  */
 package uk.ac.bolton.view;
 
+import java.util.HashMap;
+import java.util.Map;
 import uk.ac.bolton.service.ChannelObservable;
+import uk.ac.bolton.service.impl.ChannelObservableImpl;
 
 /**
  *
@@ -12,9 +15,14 @@ import uk.ac.bolton.service.ChannelObservable;
  */
 public class ChannelForm extends javax.swing.JFrame {
     
-    private ChannelObservable co;
-    private String channelName;
+    private ChannelObservable channelObservable;
 
+    {
+        this.channelObservable = new ChannelObservableImpl();
+    }
+    
+    
+    
     /**
      * Creates new form ChannelForm
      */
@@ -22,10 +30,6 @@ public class ChannelForm extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ChannelForm(ChannelObservable co) {
-        this();
-        this.co = co;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,62 +41,75 @@ public class ChannelForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        txtMessage = new javax.swing.JTextField();
-        btnSend = new javax.swing.JButton();
+        btnTweet = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtLog = new javax.swing.JTextArea();
+        txtAreaContent = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Channel");
 
-        jLabel2.setText("Message: ");
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 3, 14)); // NOI18N
+        jLabel2.setText("ABC Channel");
 
-        btnSend.setText("Send");
-        btnSend.addActionListener(new java.awt.event.ActionListener() {
+        btnTweet.setBackground(new java.awt.Color(0, 204, 204));
+        btnTweet.setFont(new java.awt.Font("Liberation Sans", 1, 13)); // NOI18N
+        btnTweet.setText("Tweet");
+        btnTweet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTweet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSendActionPerformed(evt);
+                btnTweetActionPerformed(evt);
             }
         });
 
-        txtLog.setColumns(20);
-        txtLog.setRows(5);
-        jScrollPane1.setViewportView(txtLog);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/profile.png"))); // NOI18N
+
+        txtAreaContent.setColumns(20);
+        txtAreaContent.setRows(5);
+        jScrollPane1.setViewportView(txtAreaContent);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2)))
+                        .addGap(0, 299, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnTweet, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel2)
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSend)
-                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnTweet, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
-
-    }//GEN-LAST:event_btnSendActionPerformed
+    private void btnTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTweetActionPerformed
+        String content = txtAreaContent.getText(); 
+        channelObservable.updateTheTimeLine(content);
+    }//GEN-LAST:event_btnTweetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,10 +147,15 @@ public class ChannelForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSend;
+    private javax.swing.JButton btnTweet;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea txtLog;
-    private javax.swing.JTextField txtMessage;
+    private javax.swing.JTextArea txtAreaContent;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the userProfiles
+     */
+   
 }
