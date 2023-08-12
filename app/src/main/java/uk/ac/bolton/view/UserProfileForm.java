@@ -178,4 +178,11 @@ public class UserProfileForm extends javax.swing.JFrame {
     public javax.swing.JTextArea getTxtAreaTimeLine() {
         return txtAreaTimeLine;
     }
+
+    /**
+     * @return the cmbChannels
+     */
+    public javax.swing.JComboBox<String> getCmbChannels() {
+        return cmbChannels;
+    }
 }

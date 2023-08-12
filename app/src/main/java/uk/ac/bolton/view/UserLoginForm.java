@@ -47,6 +47,7 @@ public class UserLoginForm extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("User Name:");
 
+        txtUserName.setFont(new java.awt.Font("Liberation Sans", 0, 14)); // NOI18N
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserNameActionPerformed(evt);

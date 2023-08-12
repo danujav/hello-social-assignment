@@ -23,7 +23,7 @@ public class ChannelObservableImpl implements ChannelObservable {
         Set<String> keySet = userProfileList.keySet();
         
         for (String userName : keySet) {
-            userProfileList.get(userName).getTxtAreaTimeLine().append("ABC Channel: " + content + "\n");
+            userProfileList.get(userName).getTxtAreaTimeLine().append(userProfileList.get(userName).getCmbChannels().getSelectedItem() + ": " + content + "\n");
         }
     }
 }
