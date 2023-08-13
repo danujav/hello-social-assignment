@@ -11,5 +11,7 @@ package uk.ac.bolton.service;
 public interface ChannelObservable {
     void updateTheTimeLine(String content);
     
-//    void sendNotification();
 }
+
+
+

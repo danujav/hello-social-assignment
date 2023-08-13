@@ -17,18 +17,17 @@ public class Launcher {
         channelList = new ArrayList<>();
         channelList.add(new ChannelForm());
     }
-
-    public static void main(String[] args) {
-
-        channelLauncher();
-        new UserLoginForm().setVisible(true);
-    }
-
+    
     private static void channelLauncher() {
         for (int i = 0; i < channelList.size(); i++) {
             System.out.println(i);
             channelList.get(i).displayForm(true);
-
         }
+    }
+
+    public static void main(String[] args) {
+
+        channelLauncher();
+       new UserLoginForm().setVisible(true);
     }
 }

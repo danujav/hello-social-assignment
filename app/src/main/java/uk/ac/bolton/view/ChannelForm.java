@@ -13,6 +13,13 @@ import uk.ac.bolton.service.impl.ChannelObservableImpl;
  */
 public class ChannelForm extends javax.swing.JFrame implements ISuperChannel {
 
+    @Override
+    public void displayForm(boolean con) {
+        setVisible(true);
+    }
+
+
+    
     private final ChannelObservable channelObservable;
 
     {
@@ -129,10 +136,7 @@ public class ChannelForm extends javax.swing.JFrame implements ISuperChannel {
         }.start();
     }//GEN-LAST:event_btnTweetActionPerformed
     
-    @Override
-    public void displayForm(boolean con) {
-        setVisible(true);
-    }
+    
     
     /**
      * @param args the command line arguments
