@@ -16,22 +16,22 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author danu
  */
 public class ChannelObservableImplTest {
-    
+
     public ChannelObservableImplTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
     }
-    
+
     @BeforeEach
     public void setUp() {
     }
-    
+
     @AfterEach
     public void tearDown() {
     }
@@ -40,13 +40,11 @@ public class ChannelObservableImplTest {
      * Test of updateTheTimeLine method, of class ChannelObservableImpl.
      */
     @Test
-    public void testUpdateTheTimeLine() {
+    public void testIfTimeLineUpdate() {
         System.out.println("updateTheTimeLine");
         String content = "";
         ChannelObservableImpl instance = new ChannelObservableImpl();
-//        asser instance.updateTheTimeLine(content);
-        
-        
+        instance.updateTheTimeLine(content);
     }
-    
+
 }

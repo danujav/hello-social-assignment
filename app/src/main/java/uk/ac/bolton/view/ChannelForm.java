@@ -4,8 +4,6 @@
  */
 package uk.ac.bolton.view;
 
-import java.util.HashMap;
-import java.util.Map;
 import uk.ac.bolton.service.ChannelObservable;
 import uk.ac.bolton.service.impl.ChannelObservableImpl;
 
@@ -13,7 +11,7 @@ import uk.ac.bolton.service.impl.ChannelObservableImpl;
  *
  * @author danu
  */
-public class ChannelForm extends javax.swing.JFrame {
+public class ChannelForm extends javax.swing.JFrame implements ISuperChannel {
 
     private final ChannelObservable channelObservable;
 
@@ -118,7 +116,6 @@ public class ChannelForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTweetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTweetActionPerformed
-
         new Thread() {
             @Override
             public void run() {
@@ -130,10 +127,13 @@ public class ChannelForm extends javax.swing.JFrame {
                 channelObservable.updateTheTimeLine(content);
             }
         }.start();
-
-
     }//GEN-LAST:event_btnTweetActionPerformed
-
+    
+    @Override
+    public void displayForm(boolean con) {
+        setVisible(true);
+    }
+    
     /**
      * @param args the command line arguments
      */

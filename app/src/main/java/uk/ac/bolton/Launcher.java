@@ -3,17 +3,32 @@
  */
 package uk.ac.bolton;
 
+import java.util.ArrayList;
+import java.util.List;
 import uk.ac.bolton.view.ChannelForm;
+import uk.ac.bolton.view.ISuperChannel;
 import uk.ac.bolton.view.UserLoginForm;
 
 public class Launcher {
 
-    public static void main(String[] args) {
-//        ChannelObservableeeee co = new ChannelObservableImpl();
-//        new Dashboard(co).setVisible(true);
-            
-          new ChannelForm().setVisible(true);
-          new UserLoginForm().setVisible(true);
+    private static final List<ISuperChannel> channelList;
 
+    static {
+        channelList = new ArrayList<>();
+        channelList.add(new ChannelForm());
+    }
+
+    public static void main(String[] args) {
+
+        channelLauncher();
+        new UserLoginForm().setVisible(true);
+    }
+
+    private static void channelLauncher() {
+        for (int i = 0; i < channelList.size(); i++) {
+            System.out.println(i);
+            channelList.get(i).displayForm(true);
+
+        }
     }
 }
